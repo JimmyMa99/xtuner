@@ -36,7 +36,6 @@ def run_lmdeploy_server_wrapper(lmdeploy_config_namespace: Namespace):
     serve(**lmdeploy_serve_kwargs)
 
 
-@ray.remote
 class LMDeployWorker(RolloutWorker):
     """A Ray actor that runs a text generation server using LMDeploy."""
 
@@ -227,6 +226,9 @@ class LMDeployWorker(RolloutWorker):
         tp_size = self.config.tensor_parallel_size
         dp_size = ep_size = self.config.expert_parallel_size
         distributed_executor_backend = lmdeploy_config_kwargs.get("distributed_executor_backend", "ray")
+        lmdeploy_config_kwargs["log_level"] = lmdeploy_config_kwargs.pop("log_level", "CRITICAL")
+        lmdeploy_config_kwargs["uvicorn_log_level"] = lmdeploy_config_kwargs.pop("uvicorn_log_level", "CRITICAL")
+        lmdeploy_config_kwargs["tm_log_level"] = lmdeploy_config_kwargs.pop("tm_log_level", "CRITICAL")
 
         extra_engine_config = {}
         if backend == "pytorch" and self.config.enable_return_routed_experts:
