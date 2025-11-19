@@ -33,6 +33,12 @@ class HybridChatTemplate(BaseModel):
     image_end_token: str = ""
     image_token_index: int = -100
 
+    # Audio Chat
+    audio_context_token: str | None = None
+    audio_start_token: str = ""
+    audio_end_token: str = ""
+    audio_token_index: int = -100
+
     # Agent Chat
 
     # Interpreter and function related strings

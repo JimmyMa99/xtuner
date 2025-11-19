@@ -81,6 +81,20 @@ CHAT_TEMPLATE_MAP = {
         stop_words=["<｜end▁of▁sentence｜>"],
         sep="",
     ),
+    "qwen2.5-omni": HybridChatTemplate(
+        system="<|im_start|>system\n{system}<|im_end|>\n",
+        user="<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+        assistant="{assistant}<|im_end|>",
+        stop_words=["<|im_end|>", "<|endoftext|>"],
+        image_start_token="<|vision_start|>",
+        image_end_token="<|vision_end|>",
+        image_context_token="<|image_pad|>",
+        video_context_token="<|video_pad|>",
+        audio_start_token="<|audio_start|>",
+        audio_end_token="<|audio_end|>",
+        audio_context_token="<|audio_pad|>",
+        default_system="You are a helpful assistant.",
+    ),
 }
 
 __all__ = ["ChatTemplate", "HybridChatTemplate"]

@@ -1,0 +1,2 @@
+{"messages": [{"role": "user", "content": [{"video_url": {"url": "https://modelscope-open.oss-cn-hangzhou.aliyuncs.com/images/baby.mp4"}}, {"text": "describe this video. <AUDIO_IN_VIDEO_CONTEXT>"}]}, {"role": "assistant", "content": ""}]}
+{"messages": [{"role": "user", "content": [{"video_url": {"url": "https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen2.5-Omni/draw.mp4"}}, {"text": "describe this video. <AUDIO_IN_VIDEO_CONTEXT>"}]}, {"role": "assistant", "content": ""}]}

@@ -17,6 +17,12 @@ from .compose.qwen3_vl import (
     Qwen3VLMoE30BA3Config,
     Qwen3VLMoE235BA22Config,
 )
+from .compose.qwen2_5_omni import (
+    Qwen2_5OmniConfig,
+    Qwen2_5OmniVisionConfig,
+    Qwen2_5OmniAudioConfig,
+    Qwen2_5OmniProjectorConfig,
+)
 from .dense.dense import Dense
 from .dense.qwen2 import Qwen2Dense7BConfig, Qwen2DenseConfig
 from .dense.qwen3 import Qwen3Dense0P6BConfig, Qwen3Dense4BConfig, Qwen3Dense8BConfig, Qwen3DenseConfig
@@ -37,6 +43,8 @@ model_mapping = {
     "internvl-3.5-8b-hf": InternVL3P5Dense8BConfig(),
     "internvl-3.5-1b-hf": InternVL3P5Dense1BConfig(),
     "internvl-3.5-30b-a3b-hf": InternVL3P5MoE30BA3Config(),
+    "qwen2.5-omni-3b": Qwen2_5OmniConfig(),
+
 }
 
 
@@ -59,6 +67,8 @@ def get_model_config_from_hf(model_path: Path):
         return GptOssConfig.from_hf(model_path)
     elif cfg.model_type == "deepseek_v3":
         return DeepSeekV3Config.from_hf(model_path)
+    elif cfg.model_type == "qwen2_5_omni":
+        return Qwen2_5OmniConfig.from_hf(model_path)
     else:
         raise ValueError(f"Unsupported model type: {cfg.model_type}")
 
@@ -93,4 +103,10 @@ __all__ = [
     "Qwen3VLDense4BConfig",
     "Qwen3VLDense8BConfig",
     "Qwen3VLMoE235BA22Config",
+    "Qwen2_5OmniConfig",
+    "Qwen2_5OmniDense7BConfig",
+    "Qwen2_5OmniDense14BConfig",
+    "Qwen2_5OmniVisionConfig",
+    "Qwen2_5OmniAudioConfig",
+    "Qwen2_5OmniProjectorConfig",
 ]
